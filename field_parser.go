@@ -457,10 +457,50 @@ func (ps *tagBaseFieldParser) IsRequired() (bool, error) {
 	return false, nil
 }
 
+var MapOfAlliases = map[string]string{
+	"objectID":              "len=24",
+	"accounting_code":       "len=6",
+	"accounting_code_full":  "len=8",
+	"client_number":         "len=13",
+	"objectID_e":            "len=0|len=24",
+	"item_type":             "oneof='CPU' 'RAM' 'DISK' 'LICENSE' 'SERVICE' 'VM' 'OS' 'IP' 'SNAPSHOT'",
+	"country_tva_type":      "oneof='FR' 'INTRACO' 'DOM' 'HORS-UE'",
+	"payment_method_type":   "oneof='CB' 'VSEPA' 'PSEPA' 'CREDIT'",
+	"id_number_type":        "oneof='CREDIT' 'INVOICE' 'SUBSCRIPTION' 'QUOTE'",
+	"billing_frequency":     "oneof='MONTHLY' 'QUARTERLY' 'BIANNUALLY' 'ANNUALLY'",
+	"stripe_refund_reasons": "oneof='duplicate' 'fraudulent' 'requested_by_customer'",
+	"discount_amount_type":  "oneof='PERCENTAGE' 'FIX'",
+	"discount_type":         "oneof='coupon' 'member'",
+	"mandate_type":          "oneof='offline' 'online'",
+	"invoicer_type":         "oneof='invoice' 'credit'",
+	"payment_type":          "oneof='payment' 'refund'",
+	"output_file_type":      "oneof='csv' 'pdf'",
+	"license_type":          "oneof='plesk' 'windows'",
+	"material_type":         "oneof='hypervisor'",
+	"preferred_language":    "oneof='fr' 'en' 'es' 'it' 'de'",
+	"name":                  "min=3|max=128",
+	"scheduled_action_type": "oneof='delete_server'",
+	"statement_list": "oneof='starting' 'resuming' 'started' 'resumed' 'stopping' " +
+		"'rebooting' 'suspending' 'stopped' 'suspended' 'creating' 'deleting' 'deleted' 'unpaid' " +
+		"'reseting' 'enable' 'disable' enabled' 'disabled' 'creating' 'created'",
+	"ticket_level":       "oneof='low' 'medium' 'high'",
+	"ticket_status":      "oneof='Closed' 'Pending' 'In_progress'",
+	"ticket_category":    "oneof='billing' 'technical' 'sales'",
+	"iso_protocol":       "oneof='https'",
+	"color_mode":         "oneof='DARK' 'LIGHT",
+	"subscription_state": "oneof='ongoing' 'pending' 'canceled'",
+}
+
 func (ps *tagBaseFieldParser) parseValidTags(validTag string, sf *structField) {
+
 	// `validate:"required,max=10,min=1"`
 	// ps. required checked by IsRequired().
 	for _, val := range strings.Split(validTag, ",") {
+		aliaseValue, exist := MapOfAlliases[val]
+		if exist {
+			val = aliaseValue
+		}
+
 		var (
 			valKey   string
 			valValue string
