@@ -488,7 +488,8 @@ var MapOfAlliases = map[string]string{
 	"accounting_code_full":  "len=8",
 	"client_number":         "len=13",
 	"objectID_e":            "len=0|len=24",
-	"item_type":             "oneof='CPU' 'RAM' 'DISK' 'LICENSE' 'SERVICE' 'VM' 'OS' 'IP' 'SNAPSHOT'",
+	"item_type":             "oneof='CPU' 'RAM' 'DISK' 'LICENSE' 'SERVICE' 'VM' 'OS' 'IP' 'SNAPSHOT' 'MAC'",
+	"plan_type":             "oneof='SC1' 'SC2' 'SC3'",
 	"country_tva_type":      "oneof='FR' 'INTRACO' 'DOM' 'HORS-UE'",
 	"payment_method_type":   "oneof='CB' 'VSEPA' 'PSEPA' 'CREDIT'",
 	"id_number_type":        "oneof='CREDIT' 'INVOICE' 'SUBSCRIPTION' 'QUOTE'",
@@ -514,6 +515,7 @@ var MapOfAlliases = map[string]string{
 	"iso_protocol":       "oneof='https'",
 	"color_mode":         "oneof='DARK' 'LIGHT",
 	"subscription_state": "oneof='ongoing' 'pending' 'canceled'",
+	"number_events":      "gte=1,lte=50",
 }
 
 func parseValidTags(validTag string, sf *structField) {
