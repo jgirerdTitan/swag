@@ -10,15 +10,15 @@ GOGET:=$(GOCMD) get
 GOLIST:=$(GOCMD) list
 GOVET:=$(GOCMD) vet
 GOPATH:=$(shell $(GOCMD) env GOPATH)
-u := $(if $(update),-u)
 
 BINARY_NAME:=swag
 PACKAGES:=$(shell $(GOLIST) github.com/swaggo/swag github.com/swaggo/swag/cmd/swag github.com/swaggo/swag/gen)
 GOFILES:=$(shell find . -name "*.go" -type f)
 
 export GO111MODULE := on
+export GOPROXY := direct
 
-all: test build
+all: build
 
 .PHONY: build
 build: deps
