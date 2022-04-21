@@ -517,6 +517,7 @@ var MapOfAlliases = map[string]string{
 	"subscription_state": "oneof='ongoing' 'pending' 'canceled'",
 	"number_events":      "gte=1,lte=50",
 	"vms_action":         "oneof='start' 'stop' 'reboot' 'hardstop'",
+	"history_vm_type":    "oneof='cpu' 'ram' 'disk' 'net_in' 'net_out'",
 }
 
 func parseValidTags(validTag string, sf *structField) {
