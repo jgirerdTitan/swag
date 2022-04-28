@@ -508,9 +508,9 @@ var MapOfAlliases = map[string]string{
 	"scheduled_action_type": "oneof='delete_server'",
 	"statement_list": "oneof='starting' 'resuming' 'started' 'resumed' 'stopping' " +
 		"'rebooting' 'suspending' 'stopped' 'suspended' 'creating' 'deleting' 'deleted' 'unpaid' " +
-		"'reseting' 'enable' 'disable' enabled' 'disabled' 'creating' 'created'",
+		"'reseting' 'enable' 'disable' enabled' 'disabled' 'creating' 'created' 'closed' 'pending' 'in_progress'",
 	"ticket_level":       "oneof='low' 'medium' 'high'",
-	"ticket_status":      "oneof='Closed' 'Pending' 'In_progress'",
+	"ticket_status":      "oneof='closed' 'pending' 'in_progress'",
 	"ticket_category":    "oneof='billing' 'technical' 'sales'",
 	"iso_protocol":       "oneof='https'",
 	"color_mode":         "oneof='DARK' 'LIGHT",
