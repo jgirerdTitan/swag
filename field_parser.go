@@ -481,11 +481,17 @@ var MapOfAlliases = map[string]string{
 	"preferred_language":    "oneof='fr' 'en' 'es' 'it' 'de'",
 	"name":                  "min=3|max=128",
 	"scheduled_action_type": "oneof='delete_server'",
-	"statement_list": "oneof='starting' 'resuming' 'started' 'resumed' 'stopping' " +
-		"'rebooting' 'suspending' 'stopped' 'suspended' 'creating' 'deleting' 'deleted' 'unpaid' " +
-		"'reseting' 'enable' 'disable' enabled' 'disabled' 'creating' 'created' 'closed' 'pending' 'in_progress'",
-	"ticket_level":       "oneof='low' 'medium' 'high'",
-	"ticket_status":      "oneof='closed' 'pending' 'in_progress'",
+	"statement_list": "oneof='starting' 'started' 'started_error' 'start_error' " +
+		"'resuming' 'resumed' " +
+		"'stopping' 'stopped' 'stopped_error' 'stop_error' " +
+		"'suspending' 'suspended' 'pending' 'in_progress'" +
+		"'deleting' 'deleted' 'delete_error' " +
+		"'creating' 'creating' 'created' 'created_error' 'create_error' " +
+		"'disable' 'disabled' 'enabled' 'enable' " +
+		"'rebooting' 'reseting' 'updating' " +
+		" 'unpaid' 'up' 'down' 'closed' 'open' " +
+		"'closed' 'pending_client' 'pending_admin' 'processing'",
+	"ticket_status":      "oneof='closed' 'pending_client' 'pending_admin' 'processing'",
 	"ticket_category":    "oneof='billing' 'technical' 'sales'",
 	"iso_protocol":       "oneof='https'",
 	"color_mode":         "oneof='DARK' 'LIGHT",
