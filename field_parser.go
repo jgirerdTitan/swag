@@ -479,7 +479,7 @@ var MapOfAlliases = map[string]string{
 	"license_type":          "oneof='plesk' 'windows'",
 	"material_type":         "oneof='hypervisor'",
 	"preferred_language":    "oneof='fr' 'en' 'es' 'it' 'de'",
-	"name":                  "min=3|max=128",
+	"name":                  "gte=3,lte=128",
 	"scheduled_action_type": "oneof='delete_server'",
 	"statement_list": "oneof='starting' 'started' 'started_error' 'start_error' " +
 		"'resuming' 'resumed' " +
@@ -494,8 +494,8 @@ var MapOfAlliases = map[string]string{
 	"ticket_level":       "oneof='low' 'medium' 'high'",
 	"ticket_status":      "oneof='closed' 'pending_client' 'pending_admin' 'processing'",
 	"ticket_category":    "oneof='billing' 'technical' 'sales'",
-	"ticket_object":      "min=1|max=64",
-	"ticket_content":     "min=1|max=8192",
+	"ticket_object":      "gte=1,lte=64",
+	"ticket_content":     "gte=1,lte=8192",
 	"iso_protocol":       "oneof='https'",
 	"color_mode":         "oneof='DARK' 'LIGHT",
 	"subscription_state": "oneof='ongoing' 'pending' 'canceled'",
