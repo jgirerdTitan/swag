@@ -491,8 +491,11 @@ var MapOfAlliases = map[string]string{
 		"'rebooting' 'reseting' 'updating' " +
 		" 'unpaid' 'up' 'down' 'closed' 'open' " +
 		"'closed' 'pending_client' 'pending_admin' 'processing'",
+	"ticket_level":       "oneof='low' 'medium' 'high'",
 	"ticket_status":      "oneof='closed' 'pending_client' 'pending_admin' 'processing'",
 	"ticket_category":    "oneof='billing' 'technical' 'sales'",
+	"ticket_object":      "min=1|max=64",
+	"ticket_content":     "min=1|max=8192",
 	"iso_protocol":       "oneof='https'",
 	"color_mode":         "oneof='DARK' 'LIGHT",
 	"subscription_state": "oneof='ongoing' 'pending' 'canceled'",
