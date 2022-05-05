@@ -680,5 +680,3 @@ func parseOneOfParam2(param string) []string {
 
 	return values
 }
-
-// ---.
