@@ -532,41 +532,43 @@ var MapOfAlliases = map[string]string{
 func parseValidTags(validTag string, sf *structField) {
 	// `validate:"required,max=10,min=1"`
 	// ps. required checked by IsRequired().
-	for _, val := range strings.Split(validTag, ",") {
-		aliaseValue, exist := MapOfAlliases[val]
+	for _, v1 := range strings.Split(validTag, ",") {
+		aliaseValue, exist := MapOfAlliases[v1]
 		if exist {
-			val = aliaseValue
+			v1 = aliaseValue
 		}
 
-		var (
-			valValue string
-			keyVal   = strings.Split(val, "=")
-		)
+		for _, val := range strings.Split(v1, ",") {
+			var (
+				valValue string
+				keyVal   = strings.Split(val, "=")
+			)
 
-		switch len(keyVal) {
-		case 1:
-		case 2:
-			valValue = strings.ReplaceAll(strings.ReplaceAll(keyVal[1], utf8HexComma, ","), utf8Pipe, "|")
-		default:
-			continue
-		}
-
-		switch keyVal[0] {
-		case "max", "lte":
-			sf.setMax(valValue)
-		case "min", "gte":
-			sf.setMin(valValue)
-		case "oneof":
-			sf.setOneOf(valValue)
-		case "unique":
-			if sf.schemaType == ARRAY {
-				sf.unique = true
+			switch len(keyVal) {
+			case 1:
+			case 2:
+				valValue = strings.ReplaceAll(strings.ReplaceAll(keyVal[1], utf8HexComma, ","), utf8Pipe, "|")
+			default:
+				continue
 			}
-		case "dive":
-			// ignore dive
-			return
-		default:
-			continue
+
+			switch keyVal[0] {
+			case "max", "lte":
+				sf.setMax(valValue)
+			case "min", "gte":
+				sf.setMin(valValue)
+			case "oneof":
+				sf.setOneOf(valValue)
+			case "unique":
+				if sf.schemaType == ARRAY {
+					sf.unique = true
+				}
+			case "dive":
+				// ignore dive
+				return
+			default:
+				continue
+			}
 		}
 	}
 }
